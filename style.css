@@ -1,0 +1,316 @@
+/* ---------- Design tokens: change colours here, everything follows ---------- */
+:root {
+  --bg: #dbe7ff;
+  --text: #111827;
+  --muted: #5b6472;
+  --border: rgba(17, 24, 39, 0.12);
+
+  --accent: #2563eb;       --accent-dark: #1d4ed8;
+  --edit: #0f766e;         --edit-dark: #115e59;
+  --danger: #e11d48;       --danger-dark: #be123c;
+  --purple: #7c3aed;       --purple-dark: #6d28d9;
+
+  --radius: 10px;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", "Segoe UI", system-ui, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 56px 20px;
+  line-height: 1.5;
+}
+
+/* ---------- Card ---------- */
+.container {
+  max-width: 540px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 36px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.14);
+}
+
+h1 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0 0 28px;
+}
+
+/* ---------- Input row ---------- */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: var(--text);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#taskInput::placeholder {
+  color: #94a3b8;
+}
+
+#taskInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+/* ---------- Buttons: all solid fills ---------- */
+button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#addBtn {
+  padding: 12px 22px;
+  background: var(--accent);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+#addBtn:hover {
+  background: var(--accent-dark);
+}
+
+.edit-btn,
+.delete-btn,
+.clear-btn {
+  padding: 7px 14px;
+  font-size: 0.85rem;
+}
+
+.edit-btn {
+  background: var(--edit);
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.3);
+}
+.edit-btn:hover {
+  background: var(--edit-dark);
+}
+
+.delete-btn {
+  background: var(--danger);
+  box-shadow: 0 2px 6px rgba(225, 29, 72, 0.3);
+}
+.delete-btn:hover {
+  background: var(--danger-dark);
+}
+
+.clear-btn {
+  background: var(--purple);
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+}
+.clear-btn:hover {
+  background: var(--purple-dark);
+}
+
+/* ---------- Messages ---------- */
+.error {
+  color: var(--danger);
+  min-height: 22px;
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22px 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ---------- Task list ---------- */
+#taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.task-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.task-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+/* Applied by JavaScript when a task is completed */
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 36px 0 12px;
+}
+
+/* Used by JavaScript to hide/show elements */
+.hidden {
+  display: none !important;
+}
+
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 540px;
+  margin: 0 auto 20px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.12);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-user {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.signout-btn {
+  padding: 7px 14px;
+  font-size: 0.85rem;
+  background: #475569;
+}
+
+.signout-btn:hover {
+  background: #334155;
+}
+
+/* ---------- Welcome / sign-in screen ---------- */
+.welcome {
+  text-align: center;
+}
+
+.welcome .subtitle {
+  color: var(--muted);
+  margin: -14px 0 24px;
+}
+
+.welcome .error {
+  text-align: left;
+}
+
+#nameInput {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#nameInput:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+#signInBtn {
+  padding: 12px 22px;
+  background: var(--accent);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+#signInBtn:hover {
+  background: var(--accent-dark);
+}
+
+#greeting {
+  font-size: 1.5rem;
+}
+
+.welcome-img {
+  display: block;
+  width: 220px;
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto 8px;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px;
+  }
+
+  .container {
+    padding: 24px 18px;
+  }
+
+  .task-item {
+    flex-wrap: wrap;
+  }
+
+  .task-text {
+    flex-basis: calc(100% - 40px);
+  }
+}
+h1,
+.brand {
+  font-family: var(--font-heading);
+}
+
+input,
+button {
+  font-family: inherit;
+}

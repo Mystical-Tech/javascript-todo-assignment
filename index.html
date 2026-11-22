@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Inter:wght@400;500;600&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation bar: only visible when signed in -->
+  <nav id="navbar" class="navbar hidden">
+    <span class="brand">My To-Do</span>
+    <div class="nav-right">
+      <span id="navUser" class="nav-user"></span>
+      <button id="signOutBtn" class="signout-btn">Sign out</button>
+    </div>
+  </nav>
+
+  <!-- Sign-in view: visible until a name is saved -->
+  <section id="signInView" class="container welcome">
+    <img class="welcome-img" src="image/welcome.svg" alt="A checklist with completed tasks">
+    <h1>Welcome</h1>
+    <p class="subtitle">Enter your name to get started.</p>
+    <div class="input-row">
+      <input type="text" id="nameInput" placeholder="Your name..." autocomplete="off">
+      <button id="signInBtn">Continue</button>
+    </div>
+    <p id="nameError" class="error"></p>
+  </section>
+
+  <!-- App view: the to-do list, visible after sign-in -->
+  <main id="appView" class="container hidden">
+    <h1 id="greeting"></h1>
+
+    <div class="input-row">
+      <input type="text" id="taskInput" placeholder="Enter a task..." autocomplete="off">
+      <button id="addBtn">Add Task</button>
+    </div>
+    <p id="errorMsg" class="error"></p>
+
+    <div class="info-row">
+      <span id="taskCount">Total: 0 | Completed: 0</span>
+      <button id="clearBtn" class="clear-btn">Clear All</button>
+    </div>
+
+    <ul id="taskList"></ul>
+    <p id="emptyMsg" class="empty">No tasks yet. Add one above!</p>
+  </main>
+
+  <!-- Script goes at the end so the elements above already exist when JS runs -->
+  <script src="script.js"></script>
+</body>
+</html>
